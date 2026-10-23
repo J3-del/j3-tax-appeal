@@ -13,14 +13,3 @@
   }
   tick(); setInterval(tick, 60000);
 })();
-
-// Intake form — validates and confirms. Wire to the intake endpoint before launch.
-document.getElementById('intakeForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  var f = e.target;
-  if(!f.checkValidity()){ f.reportValidity(); return; }
-  var note = document.getElementById('formNote');
-  note.textContent = 'Thank you — your review request is noted. Intake for the 2027/28 season opens in January 2027 when the new assessment roll is published, and requests are handled in the order received.';
-  note.classList.add('success');
-  f.querySelector('button[type=submit]').disabled = true;
-});
