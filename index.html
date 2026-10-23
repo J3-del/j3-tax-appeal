@@ -115,14 +115,14 @@
       <p>The Department of Finance doesn't visit your home. It values every Class 1 property at once using a statistical model (called CAMA) fed with neighborhood sales data. The model can't see your home's condition, an awkward layout, a noisy block, or a record error — and it prices your home off sales that may not be truly comparable.</p>
       <p>Three facts worth knowing:</p>
       <ul class="fact-list">
-        <li><strong>Assessments reset every year.</strong> Winning once doesn't protect you next year — and never filing means errors compound quietly.</li>
+        <li><strong>Every year is a new assessment.</strong> Finance re-values every property each January, and a Tax Commission reduction applies to that tax year only — this year's win doesn't lower next year's number. Each year stands on its own, and each year can be appealed.</li>
         <li><strong>Most owners never appeal.</strong> Only a small fraction of the city's 700,000+ Class 1 owners file in a typical year — which is how over-assessments go uncorrected.</li>
         <li><strong>An appeal asks only for a reduction.</strong> The Tax Commission's job is to correct assessments that are excessive, unequal, or unlawful. It reviews the value Finance already set — it cannot change your home's market value.</li>
       </ul>
     </div>
     <div class="stat-card">
       <p class="stat-big">6% / 20%</p>
-      <p class="stat-label">The legal caps on how fast a Class 1 assessment can rise: no more than 6% in one year or 20% over five, new construction aside. An appeal is how a starting value that was set too high gets corrected.</p>
+      <p class="stat-label">The legal caps on how fast a Class 1 assessment can rise: no more than 6% in one year or 20% over five. Increases from physical improvements or an expiring exemption don't count against the caps. An appeal is how a value that was set too high gets corrected.</p>
       <p class="stat-small">Source: NYC Department of Finance, Class 1 Property Tax Guide. The free review shows where your home sits inside these caps.</p>
     </div>
   </div>
@@ -142,6 +142,10 @@
     <details>
       <summary>Is my home Tax Class 1?</summary>
       <p>Almost certainly, if it's a 1–3 family house. Class 1 also covers most residentially zoned vacant land and condominium units in buildings of three stories or fewer. Your tax class is printed on your Notice of Property Value, which the city mails each January — and your free review will confirm it.</p>
+    </details>
+    <details>
+      <summary>How do you know whether there's a case?</summary>
+      <p>The same test the Tax Commission applies. We estimate what your home would sell for and compare it with its "effective market value" — the value Finance is effectively taxing you on (your assessed value before exemptions, divided by 6%). If your home is worth less than that number, recent comparable sales support an appeal. If they don't, we tell you that too.</p>
     </details>
     <details>
       <summary>What do you need from me?</summary>
@@ -170,18 +174,29 @@
   <div class="wrap two-col">
     <div>
       <h2>Get your free assessment review</h2>
-      <p>When the city publishes the new assessment roll in January 2027, we'll compare your assessment to recent comparable sales and tell you what we find — whether or not there's a case. Intake for the 2027/28 season opens then, and requests are handled in the order received.</p>
+      <p>Tell us where your home is. We'll compare your assessment to recent comparable sales and tell you what we find — whether or not there's a case. Applications for 2027/28 are filed after the city publishes the new assessment roll in January 2027 — and reviews are handled in the order requested, so asking now puts yours first in line.</p>
       <ul class="fact-list">
         <li>Free, no obligation</li>
         <li>Built on your home's actual comparable sales</li>
         <li>No reduction, no fee — ever</li>
       </ul>
     </div>
-    <div class="intake">
-      <h3 style="margin-top:0">Online intake opens January 2027</h3>
-      <p>This page starts taking review requests when the city publishes the new assessment roll in mid-January 2027 — the numbers a 2027/28 appeal is built on don't exist before then.</p>
-      <p>Until then, the J3 representative who shared this page with you can take your address and start your free review by hand. Requests are handled in the order received.</p>
-    </div>
+    <form class="intake" id="intakeForm" novalidate>
+      <label>Full name<input type="text" name="name" required autocomplete="name"></label>
+      <label>Email<input type="email" name="email" required autocomplete="email"></label>
+      <label>Phone (optional)<input type="tel" name="phone" autocomplete="tel"></label>
+      <label>Property address<input type="text" name="address" required placeholder="Street address"></label>
+      <label>Borough
+        <select name="borough" required>
+          <option value="">Select borough</option>
+          <option>Manhattan</option><option>Brooklyn</option><option>Queens</option>
+          <option>Bronx</option><option>Staten Island</option>
+        </select>
+      </label>
+      <label>ZIP code<input type="text" name="zip" required inputmode="numeric" pattern="[0-9]{5}"></label>
+      <button type="submit" class="btn btn-primary btn-block">Request My Free Review</button>
+      <p class="form-note" id="formNote">Free, and no obligation. Your information is used only to prepare your review.</p>
+    </form>
   </div>
 </section>
 

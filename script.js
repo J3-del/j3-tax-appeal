@@ -13,3 +13,50 @@
   }
   tick(); setInterval(tick, 60000);
 })();
+
+// Intake form. Works with Web3Forms (recommended: 250 free submissions/mo) or
+// Formspree. To go live: create the form backend with the business's lead email,
+// then paste the endpoint and any required key below. For Web3Forms set
+// FORM_ENDPOINT to https://api.web3forms.com/submit and FORM_EXTRA_FIELDS to
+// { access_key: 'YOUR-KEY' }; for Formspree set FORM_ENDPOINT to
+// https://formspree.io/f/XXXXXXXX and leave FORM_EXTRA_FIELDS empty.
+// While FORM_ENDPOINT is empty the form stays honest — it tells the visitor
+// online requests are not connected yet instead of pretending a submit worked.
+var FORM_ENDPOINT = '';
+var FORM_EXTRA_FIELDS = {};
+
+document.getElementById('intakeForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var f = e.target;
+  if(!f.checkValidity()){ f.reportValidity(); return; }
+  var note = document.getElementById('formNote');
+
+  if(!FORM_ENDPOINT){
+    note.textContent = 'Online requests are not connected just yet. The J3 representative who shared this page can take your details today — and this form goes live shortly.';
+    note.classList.remove('success');
+    return;
+  }
+
+  var btn = f.querySelector('button[type=submit]');
+  btn.disabled = true;
+  var data = new FormData(f);
+  Object.keys(FORM_EXTRA_FIELDS).forEach(function(k){ data.append(k, FORM_EXTRA_FIELDS[k]); });
+  fetch(FORM_ENDPOINT, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(function(res){
+    if(res.ok){
+      note.textContent = 'Thank you — your review request is in. Requests are handled in the order received.';
+      note.classList.add('success');
+      f.reset();
+    } else {
+      throw new Error('submit failed');
+    }
+  }).catch(function(){
+    note.textContent = "Something didn't go through. Please try again — or leave your details with the J3 representative who shared this page.";
+    note.classList.remove('success');
+  }).finally(function(){
+    btn.disabled = false;
+  });
+});
