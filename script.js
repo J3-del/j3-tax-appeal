@@ -49,7 +49,7 @@ document.getElementById('intakeForm').addEventListener('submit', function(e){
     headers: { 'Accept': 'application/json' }
   }).then(function(res){
     if(res.ok){
-      note.textContent = 'Thank you. Your information is in, and we will compare your assessment to recent sales and be in touch. Nothing is filed until you review and sign your application.';
+      note.textContent = 'Thank you - your details are in. We will pull your assessment and recent nearby sales and be in touch with a straight answer. Nothing is filed until you review and sign your application.';
       note.classList.add('success');
       f.reset();
     } else {
