@@ -114,3 +114,10 @@ details p{padding:0 20px 18px;color:#33475c}
   .hero h1{font-size:2.1rem}
   .nav a:not(.nav-cta){display:none}
 }
+
+/* persuasion revision additions */
+.steps4{grid-template-columns:repeat(4,1fr)}
+.stat-big small{font-size:.45em;font-weight:600}
+@media (max-width:900px){
+  .steps4{grid-template-columns:1fr}
+}
