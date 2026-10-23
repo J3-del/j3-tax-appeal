@@ -47,7 +47,7 @@ document.getElementById('intakeForm').addEventListener('submit', function(e){
     headers: { 'Accept': 'application/json' }
   }).then(function(res){
     if(res.ok){
-      note.textContent = 'Thank you — your review request is in. Requests are handled in the order received.';
+      note.textContent = 'Thank you — your review request is in. We\'ll be in touch about your review.';
       note.classList.add('success');
       f.reset();
     } else {

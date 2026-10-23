@@ -73,8 +73,8 @@ a{color:var(--navy)}
 
 /* faq */
 details{border:1px solid var(--line);border-radius:8px;margin-bottom:12px;background:#fff}
-details summary{cursor:pointer;font-weight:700;color:var(--navy);padding:16px 20px;list-style:none}
-details summary::after{content:"+";float:right;color:var(--gold);font-size:1.2rem}
+details summary{cursor:pointer;font-weight:700;color:var(--navy);padding:16px 48px 16px 20px;list-style:none;position:relative}
+details summary::after{content:"+";color:var(--gold);font-size:1.2rem;position:absolute;right:20px;top:15px;line-height:1}
 details[open ] summary::after{content:"–"}
 details p{padding:0 20px 18px;color:#33475c}
 
