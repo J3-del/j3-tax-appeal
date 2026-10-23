@@ -215,7 +215,7 @@
     </details>
     <details>
       <summary>What do you need from me?</summary>
-      <p>Just your address and a way to reach you - the form below is six fields. We look up what the city already knows about your home: the assessment, the property record, the recent sales nearby. If we find a case, we confirm the details only you know when we prepare your application - and nothing is filed until you review and sign it.</p>
+      <p>About ten minutes with the form below. It asks only what public records can't tell us - things like room counts, alterations, and recent history. Block and lot, property type, ownership, and your assessed value, we look up ourselves from your address. If we find a case, we prepare your application - and nothing is filed until you review and sign it.</p>
     </details>
     <details>
       <summary>When is the deadline?</summary>
@@ -252,9 +252,9 @@
   <div class="wrap two-col">
     <div>
       <h2>Get your free assessment review</h2>
-      <p>Your address and a way to reach you - that's all we ask. We look up what the city already knows about your home: the assessment, the property record, recent sales nearby. Then we tell you what we find, whether or not there's a case. Applications for 2027/28 are filed after the city publishes the new assessment roll in January 2027.</p>
+      <p>The form below asks what the application needs - but only for things we can't look up ourselves. Block and lot, property type, owner names, the assessed value: we pull those from public records once we have your address. Then we tell you what we find, whether or not there's a case. Applications for 2027/28 are filed after the city publishes the new assessment roll in January 2027.</p>
       <ul class="fact-list">
-        <li>Six fields - your address and how to reach you</li>
+        <li>No lookup-able questions - we pull the public records</li>
         <li>A straight answer - if there's no case, we say so</li>
         <li>No reduction, no fee - ever</li>
       </ul>
@@ -262,12 +262,24 @@
     <form class="intake" id="intakeForm" novalidate>
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <fieldset>
-        <legend>Start here</legend>
+        <legend>About you</legend>
         <label>Your name<input type="text" name="name" required autocomplete="name"></label>
         <div class="grid2">
           <label>Email<input type="email" name="email" required autocomplete="email"></label>
           <label>Phone (optional)<input type="tel" name="phone" autocomplete="tel"></label>
         </div>
+        <label>Mailing address, if different from the property (optional)<input type="text" name="mailing_address" autocomplete="street-address"></label>
+        <label>Your relationship to the owner (optional)
+          <select name="contact_relationship">
+            <option value="">Select</option>
+            <option>I am the owner</option>
+            <option>Spouse or family member</option>
+            <option>Property manager or agent</option>
+            <option>Other</option>
+            <option>Prefer to say later</option>
+          </select>
+        </label>
+        <label>Who would sign the application? (optional)<input type="text" name="signer_name" placeholder="Signer name, if known"><span class="hint">The application is signed in person before anything is filed.</span></label>
       </fieldset>
       <fieldset>
         <legend>The property</legend>
@@ -278,12 +290,54 @@
             <option>Manhattan</option><option>Brooklyn</option><option>Queens</option>
             <option>Bronx</option><option>Staten Island</option>
           </select>
-          <span class="hint">The city's records are searched by borough - this is how we find your home.</span>
+          <span class="hint">The city's records are searched by borough - this is how we find your home. Block and lot, property type, owner names, and the assessed value, we look up ourselves.</span>
         </label>
-        <label>Anything else we should know? (optional)<textarea name="notes" rows="3"></textarea></label>
       </fieldset>
+      <fieldset>
+        <legend>Your home's details</legend>
+        <p class="hint">The application asks for a physical description of the property. Answer what you know; anything missing, we confirm with you before your application is prepared.</p>
+        <div class="grid4">
+          <label>Kitchens<input type="number" name="kitchens" min="0" max="20"></label>
+          <label>Baths<input type="number" name="baths" min="0" max="20"></label>
+          <label>Bedrooms<input type="number" name="bedrooms" min="0" max="30"></label>
+          <label>Other rooms<input type="number" name="other_rooms" min="0" max="30"></label>
+          <label>Garage spots<input type="number" name="parking_indoor" min="0" max="20"></label>
+          <label>Outdoor spots<input type="number" name="parking_outdoor" min="0" max="20"></label>
+        </div>
+        <label>Basement
+          <select name="basement">
+            <option value="">Select</option>
+            <option>No basement</option>
+            <option>Unfinished space only</option>
+            <option>Finished living space</option>
+          </select>
+        </label>
+        <label>Additions or major alterations since you bought it (optional)<input type="text" name="alterations" placeholder="Year and what was done, e.g. 2019 dormer"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Recent history</legend>
+        <p class="hint">The application asks about recent rentals, sales, and construction. Exact dates are confirmed against the current year's form when your application is prepared.</p>
+        <label>Was any part of the property rented for a store, office, or other non-residential use in 2025 or 2026?
+          <select name="nonres_rental_recent">
+            <option value="">Select</option><option>No</option><option>Yes</option><option>Not sure</option>
+          </select>
+        </label>
+        <label>Is the property listed for sale now, or under contract to sell?
+          <select name="sale_status">
+            <option value="">Select</option><option>No</option><option>Listed for sale</option><option>Under contract to sell</option>
+          </select>
+        </label>
+        <label>If listed or under contract, asking or contract price (optional)<input type="text" name="sale_price"></label>
+        <label>Any construction, demolition, or major renovation since January 2024?
+          <select name="construction_since_2024">
+            <option value="">Select</option><option>No</option><option>Yes</option>
+          </select>
+        </label>
+        <label>If yes, what was done, when, and approximate cost (optional)<input type="text" name="construction_details"></label>
+      </fieldset>
+      <label>Anything else we should know? (optional)<textarea name="notes" rows="3"></textarea></label>
       <button type="submit" class="btn btn-primary btn-block">Request My Free Review</button>
-      <p class="form-note" id="formNote">Free, and no obligation. We pull your assessment, property record, and nearby sales from public records and come back with a straight answer. If there's a case, we confirm the details only you know and prepare your application - you review and sign it before anything is filed.</p>
+      <p class="form-note" id="formNote">Free, and no obligation. We pull your assessment, property record, and nearby sales from public records and come back with a straight answer. If there's a case, we prepare your application - you review and sign it before anything is filed.</p>
     </form>
   </div>
 </section>
