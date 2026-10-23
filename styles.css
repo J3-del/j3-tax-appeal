@@ -91,6 +91,8 @@ details p{padding:0 20px 18px;color:#33475c}
 .intake .hint{display:block;font-weight:400;color:var(--gray);font-size:.8rem;margin-top:3px}
 .intake .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
 .intake .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:0 12px}
+.intake .grid4 label{display:flex;flex-direction:column}
+.intake .grid4 label input{margin-top:auto}
 .intake textarea{width:100%;margin-top:5px;padding:11px 12px;border:1px solid var(--line);border-radius:6px;font:inherit;background:#fff}
 .intake textarea:focus{outline:2px solid var(--navy-2);outline-offset:1px}
 .intake .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
