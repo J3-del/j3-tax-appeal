@@ -215,7 +215,7 @@
     </details>
     <details>
       <summary>What do you need from me?</summary>
-      <p>Just your address and a way to reach you - the form below is seven fields. We look up everything the city already knows about your home: the assessment, the property record, the recent sales nearby. If we find a case, we confirm the details only you know when we prepare your application - and nothing is filed until you review and sign it.</p>
+      <p>Just your address and a way to reach you - the form below is six fields. We look up everything the city already knows about your home: the assessment, the property record, the recent sales nearby. If we find a case, we confirm the details only you know when we prepare your application - and nothing is filed until you review and sign it.</p>
     </details>
     <details>
       <summary>When is the deadline?</summary>
@@ -254,7 +254,7 @@
       <h2>Get your free assessment review</h2>
       <p>Your address and a way to reach you - that's all we ask. We look up everything the city already knows about your home: the assessment, the property record, recent sales nearby. Then we tell you what we find, whether or not there's a case. Applications for 2027/28 are filed after the city publishes the new assessment roll in January 2027.</p>
       <ul class="fact-list">
-        <li>Seven fields - your address and how to reach you</li>
+        <li>Six fields - your address and how to reach you</li>
         <li>A straight answer - if there's no case, we say so</li>
         <li>No reduction, no fee - ever</li>
       </ul>
@@ -272,16 +272,14 @@
       <fieldset>
         <legend>The property</legend>
         <label>Property address<input type="text" name="address" required placeholder="Street address"></label>
-        <div class="grid2">
-          <label>Borough
-            <select name="borough" required>
-              <option value="">Select borough</option>
-              <option>Manhattan</option><option>Brooklyn</option><option>Queens</option>
-              <option>Bronx</option><option>Staten Island</option>
-            </select>
-          </label>
-          <label>ZIP code<input type="text" name="zip" required inputmode="numeric" pattern="[0-9]{5}"></label>
-        </div>
+        <label>Borough
+          <select name="borough" required>
+            <option value="">Select borough</option>
+            <option>Manhattan</option><option>Brooklyn</option><option>Queens</option>
+            <option>Bronx</option><option>Staten Island</option>
+          </select>
+          <span class="hint">The city's records are searched by borough - this is how we find your home.</span>
+        </label>
         <label>Anything else we should know? (optional)<textarea name="notes" rows="3"></textarea></label>
       </fieldset>
       <button type="submit" class="btn btn-primary btn-block">Request My Free Review</button>
