@@ -28,6 +28,7 @@ var FORM_EXTRA_FIELDS = { access_key: 'e9acd562-8d4e-4de9-b7d1-4bd93364c856' };
 document.getElementById('intakeForm').addEventListener('submit', function(e){
   e.preventDefault();
   var f = e.target;
+  if(f.dataset.submitting === 'true') return;
   if(!f.checkValidity()){ f.reportValidity(); return; }
   var note = document.getElementById('formNote');
 
@@ -39,6 +40,8 @@ document.getElementById('intakeForm').addEventListener('submit', function(e){
 
   var btn = f.querySelector('button[type=submit]');
   btn.disabled = true;
+  f.dataset.submitting = 'true';
+  f.setAttribute('aria-busy', 'true');
   var data = new FormData(f);
   Object.keys(FORM_EXTRA_FIELDS).forEach(function(k){ data.append(k, FORM_EXTRA_FIELDS[k]); });
   data.set('subject', 'J3 intake: ' + (data.get('address') || 'new lead'));
@@ -48,17 +51,20 @@ document.getElementById('intakeForm').addEventListener('submit', function(e){
     body: data,
     headers: { 'Accept': 'application/json' }
   }).then(function(res){
-    if(res.ok){
-      note.textContent = 'Thank you - your details are in. We will pull your assessment and recent nearby sales and be in touch with a straight answer. Nothing is filed until you review and sign your application.';
-      note.classList.add('success');
-      f.reset();
-    } else {
-      throw new Error('submit failed');
-    }
+    return res.json().then(function(result){
+      if(!res.ok || result.success !== true) throw new Error('submit failed');
+      return result;
+    });
+  }).then(function(){
+    note.textContent = 'Thank you - your details are in. We will pull your assessment and recent nearby sales and be in touch with a straight answer. Nothing is filed until you review and sign your application.';
+    note.classList.add('success');
+    f.reset();
   }).catch(function(){
     note.textContent = "Something didn't go through. Please try again — or leave your details with the J3 representative who shared this page.";
     note.classList.remove('success');
   }).finally(function(){
     btn.disabled = false;
+    delete f.dataset.submitting;
+    f.removeAttribute('aria-busy');
   });
 });
