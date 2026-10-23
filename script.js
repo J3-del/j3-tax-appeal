@@ -41,13 +41,15 @@ document.getElementById('intakeForm').addEventListener('submit', function(e){
   btn.disabled = true;
   var data = new FormData(f);
   Object.keys(FORM_EXTRA_FIELDS).forEach(function(k){ data.append(k, FORM_EXTRA_FIELDS[k]); });
+  data.set('subject', 'J3 intake: ' + (data.get('address') || 'new lead'));
+  data.set('from_name', 'J3 Site Intake');
   fetch(FORM_ENDPOINT, {
     method: 'POST',
     body: data,
     headers: { 'Accept': 'application/json' }
   }).then(function(res){
     if(res.ok){
-      note.textContent = 'Thank you — your review request is in. We\'ll be in touch about your review.';
+      note.textContent = 'Thank you. Your information is in, and we will compare your assessment to recent sales and be in touch. Nothing is filed until you review and sign your application.';
       note.classList.add('success');
       f.reset();
     } else {

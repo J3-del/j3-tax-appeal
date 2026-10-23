@@ -97,7 +97,7 @@
       <div class="step">
         <span class="step-num">2</span>
         <h3>You sign, we build the case</h3>
-        <p>If the numbers support an appeal, you sign the application itself — the same Form TC108 you could file on your own. We prepare it, select the strongest comparable sales, and flag any errors in the city's record of your home — wrong square footage, lot size, or condition.</p>
+        <p>If the numbers support an appeal, you sign the application itself before anything is filed. We prepare it, select the strongest comparable sales, and flag any errors in the city's record of your home, such as wrong square footage, lot size, or condition.</p>
       </div>
       <div class="step">
         <span class="step-num">3</span>
@@ -149,7 +149,7 @@
     </details>
     <details>
       <summary>What do you need from me?</summary>
-      <p>Very little: your signature on the application, your Notice of Property Value (the city mails it each January), and confirmation of your home's details — rooms, condition, any recent work. We handle the comparable sales, the forms, and the filing.</p>
+      <p>Your answers in the intake form below, and your signature on the application if we find a case. Nothing is filed until you have reviewed and signed it. We handle the comparable sales, the forms, and the filing.</p>
     </details>
     <details>
       <summary>When is the deadline?</summary>
@@ -165,7 +165,7 @@
     </details>
     <details>
       <summary>Are you part of New York City government?</summary>
-      <p>No. We are a private company and are not affiliated with the City of New York, the Department of Finance, or the Tax Commission. You can file an application yourself for free — our service exists for homeowners who would rather have the analysis, paperwork, and deadlines handled for them.</p>
+      <p>No. We are a private company and are not affiliated with the City of New York, the Department of Finance, or the Tax Commission.</p>
     </details>
   </div>
 </section>
@@ -174,7 +174,7 @@
   <div class="wrap two-col">
     <div>
       <h2>Get your free assessment review</h2>
-      <p>Tell us where your home is. We'll compare your assessment to recent comparable sales and tell you what we find — whether or not there's a case. Applications for 2027/28 are filed after the city publishes the new assessment roll in January 2027.</p>
+      <p>Tell us about your home. The intake covers what the Tax Commission application asks. The more you share now, the less we have to ask later. We'll compare your assessment to recent comparable sales and tell you what we find, whether or not there's a case. Applications for 2027/28 are filed after the city publishes the new assessment roll in January 2027.</p>
       <ul class="fact-list">
         <li>Free, no obligation</li>
         <li>Built on your home's actual comparable sales</li>
@@ -182,20 +182,126 @@
       </ul>
     </div>
     <form class="intake" id="intakeForm" novalidate>
-      <label>Full name<input type="text" name="name" required autocomplete="name"></label>
-      <label>Email<input type="email" name="email" required autocomplete="email"></label>
-      <label>Phone (optional)<input type="tel" name="phone" autocomplete="tel"></label>
-      <label>Property address<input type="text" name="address" required placeholder="Street address"></label>
-      <label>Borough
-        <select name="borough" required>
-          <option value="">Select borough</option>
-          <option>Manhattan</option><option>Brooklyn</option><option>Queens</option>
-          <option>Bronx</option><option>Staten Island</option>
-        </select>
-      </label>
-      <label>ZIP code<input type="text" name="zip" required inputmode="numeric" pattern="[0-9]{5}"></label>
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <fieldset>
+        <legend>About you</legend>
+        <label>Full name (as it appears on your deed or tax notice)<input type="text" name="name" required autocomplete="name"></label>
+        <div class="grid2">
+          <label>Email<input type="email" name="email" required autocomplete="email"></label>
+          <label>Phone (optional)<input type="tel" name="phone" autocomplete="tel"></label>
+        </div>
+        <label>Mailing address, if different from the property (optional)<input type="text" name="mailing_address" autocomplete="street-address"></label>
+        <label>The property is owned by (optional)
+          <select name="ownership_type">
+            <option value="">Select</option>
+            <option>Me / my family, as individuals</option>
+            <option>An LLC or corporation</option>
+            <option>A trust</option>
+            <option>Not sure</option>
+          </select>
+        </label>
+        <label>Legal owner name(s), exactly as on the deed or tax notice (optional)<input type="text" name="legal_owner_names" placeholder="If different from your name"></label>
+        <label>Your relationship to the owner (optional)
+          <select name="contact_relationship">
+            <option value="">Select</option>
+            <option>I am the owner</option>
+            <option>Spouse or family member</option>
+            <option>Property manager or agent</option>
+            <option>Other</option>
+            <option>Prefer to say later</option>
+          </select>
+        </label>
+        <label>Who would sign the application? (optional)<input type="text" name="signer_name" placeholder="Signer name, if known"><span class="hint">The application is signed in person before anything is filed.</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>The property</legend>
+        <label>Property address<input type="text" name="address" required placeholder="Street address"></label>
+        <div class="grid2">
+          <label>Borough
+            <select name="borough" required>
+              <option value="">Select borough</option>
+              <option>Manhattan</option><option>Brooklyn</option><option>Queens</option>
+              <option>Bronx</option><option>Staten Island</option>
+            </select>
+          </label>
+          <label>ZIP code<input type="text" name="zip" required inputmode="numeric" pattern="[0-9]{5}"></label>
+        </div>
+        <label>Block and lot (optional)<input type="text" name="block_lot" placeholder="e.g. Block 5123, Lot 45"><span class="hint">Printed on your Notice of Property Value. If you don't have it, we look it up.</span></label>
+        <label>Property type
+          <select name="property_type" required>
+            <option value="">Select property type</option>
+            <option>1-family house</option>
+            <option>2-family house</option>
+            <option>3-family house</option>
+            <option>Condominium unit (3 stories or fewer)</option>
+            <option>Vacant residential land</option>
+            <option>Other / not sure</option>
+          </select>
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>Your home's details</legend>
+        <p class="hint">The application asks for a physical description of the property. Answer what you know; anything missing, we confirm with you before your application is prepared.</p>
+        <div class="grid4">
+          <label>Kitchens<input type="number" name="kitchens" min="0" max="20"></label>
+          <label>Baths<input type="number" name="baths" min="0" max="20"></label>
+          <label>Bedrooms<input type="number" name="bedrooms" min="0" max="30"></label>
+          <label>Other rooms<input type="number" name="other_rooms" min="0" max="30"></label>
+          <label>Stories<input type="number" name="stories" min="0" max="10"></label>
+          <label>Year built<input type="text" name="year_built" inputmode="numeric" pattern="[0-9]{4}" placeholder="If known"></label>
+          <label>Garage spots<input type="number" name="parking_indoor" min="0" max="20"></label>
+          <label>Outdoor spots<input type="number" name="parking_outdoor" min="0" max="20"></label>
+        </div>
+        <label>Basement
+          <select name="basement">
+            <option value="">Select</option>
+            <option>No basement</option>
+            <option>Unfinished space only</option>
+            <option>Finished living space</option>
+          </select>
+        </label>
+        <label>Additions or major alterations since you bought it (optional)<input type="text" name="alterations" placeholder="Year and what was done, e.g. 2019 dormer"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Recent history</legend>
+        <p class="hint">The application asks about recent sales, listings, refinancing, and construction. Exact dates are confirmed against the current year's form when your application is prepared.</p>
+        <label>Was any part of the property rented for a store, office, or other non-residential use in 2025 or 2026?
+          <select name="nonres_rental_recent">
+            <option value="">Select</option><option>No</option><option>Yes</option><option>Not sure</option>
+          </select>
+        </label>
+        <label>Did you buy the property since January 2024?
+          <select name="bought_since_2024">
+            <option value="">Select</option><option>No</option><option>Yes</option>
+          </select>
+        </label>
+        <label>If yes, purchase date and price (optional)<input type="text" name="purchase_details" placeholder="e.g. June 2024, $850,000"></label>
+        <label>Is the property listed for sale now, or under contract to sell?
+          <select name="sale_status">
+            <option value="">Select</option><option>No</option><option>Listed for sale</option><option>Under contract to sell</option>
+          </select>
+        </label>
+        <label>If listed or under contract, asking or contract price (optional)<input type="text" name="sale_price"></label>
+        <label>Refinanced since January 2024?
+          <select name="refinanced_since_2024">
+            <option value="">Select</option><option>No</option><option>Yes</option><option>Not sure</option>
+          </select>
+        </label>
+        <label>Any construction, demolition, or major renovation since January 2024?
+          <select name="construction_since_2024">
+            <option value="">Select</option><option>No</option><option>Yes</option>
+          </select>
+        </label>
+        <label>If yes, what was done, when, and approximate cost (optional)<input type="text" name="construction_details"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Value</legend>
+        <label>Assessed value from your Notice of Property Value (optional)<input type="text" name="assessed_value" inputmode="numeric" placeholder="e.g. 42,000"><span class="hint">The city mails this notice each January. Skip it if you don't have it handy; we pull it from public records.</span></label>
+        <label>What do you think the property would sell for today? (optional)<input type="text" name="estimated_market_value" inputmode="numeric" placeholder="e.g. 700,000"></label>
+        <label>Anything else we should know? (optional)<textarea name="notes" rows="3"></textarea></label>
+      </fieldset>
       <button type="submit" class="btn btn-primary btn-block">Request My Free Review</button>
-      <p class="form-note" id="formNote">Free, and no obligation. Your information is used only to prepare your review.</p>
+      <p class="form-note" id="formNote">Free, and no obligation. This starts your review. If there's a case, we prepare your application for you to review and sign before anything is filed.</p>
     </form>
   </div>
 </section>
@@ -224,7 +330,7 @@
     </div>
   </div>
   <div class="wrap legal">
-    <p>J3 Tax Appeal is a private company. It is not affiliated with the City of New York, the NYC Department of Finance, or the NYC Tax Commission, and it is not a law firm. Homeowners may file a Tax Commission application themselves at no charge. Any savings figures shown are estimates based on public records and comparable sales; they are not guarantees of any reduction. Fees and terms are set out in a written agreement before any filing. This site does not constitute legal or tax advice. Dates and rules shown reflect NYC Tax Commission and Department of Finance publications for the 2026/27 tax year; 2027/28 forms and instructions will post on nyc.gov.</p>
+    <p>J3 Tax Appeal is a private company. It is not affiliated with the City of New York, the NYC Department of Finance, or the NYC Tax Commission, and it is not a law firm. Any savings figures shown are estimates based on public records and comparable sales; they are not guarantees of any reduction. Fees and terms are set out in a written agreement before any filing. This site does not constitute legal or tax advice. Dates and rules shown reflect NYC Tax Commission and Department of Finance publications for the 2026/27 tax year; 2027/28 forms and instructions will post on nyc.gov.</p>
   </div>
 </footer>
 

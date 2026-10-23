@@ -84,6 +84,16 @@ details p{padding:0 20px 18px;color:#33475c}
 .intake label{display:block;font-weight:600;color:var(--navy);font-size:.93rem;margin-bottom:14px}
 .intake input,.intake select{width:100%;margin-top:5px;padding:11px 12px;border:1px solid var(--line);border-radius:6px;font:inherit;background:#fff}
 .intake input:focus,.intake select:focus{outline:2px solid var(--navy-2);outline-offset:1px}
+.intake fieldset{border:none;border-top:1px solid var(--line);margin:16px 0 2px;padding:16px 0 0}
+.intake fieldset:first-of-type{border-top:none;margin-top:0;padding-top:0}
+.intake legend{font-weight:700;color:var(--navy);font-size:1rem;padding-right:10px}
+.intake p.hint{font-weight:400;color:var(--gray);font-size:.84rem;margin:0 0 12px}
+.intake .hint{display:block;font-weight:400;color:var(--gray);font-size:.8rem;margin-top:3px}
+.intake .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.intake .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:0 12px}
+.intake textarea{width:100%;margin-top:5px;padding:11px 12px;border:1px solid var(--line);border-radius:6px;font:inherit;background:#fff}
+.intake textarea:focus{outline:2px solid var(--navy-2);outline-offset:1px}
+.intake .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .form-note{font-size:.85rem;color:var(--gray);margin-top:12px;text-align:center}
 .form-note.success{color:#1e7a34;font-weight:700}
 
@@ -97,6 +107,7 @@ details p{padding:0 20px 18px;color:#33475c}
 .legal{margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.18);font-size:.8rem;color:#93a7bb}
 
 @media (max-width:900px){
+  .intake .grid4{grid-template-columns:1fr 1fr}
   .hero-inner,.two-col{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:1fr}
