@@ -22,8 +22,8 @@
 // https://formspree.io/f/XXXXXXXX and leave FORM_EXTRA_FIELDS empty.
 // While FORM_ENDPOINT is empty the form stays honest — it tells the visitor
 // online requests are not connected yet instead of pretending a submit worked.
-var FORM_ENDPOINT = '';
-var FORM_EXTRA_FIELDS = {};
+var FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+var FORM_EXTRA_FIELDS = { access_key: 'e9acd562-8d4e-4de9-b7d1-4bd93364c856' };
 
 document.getElementById('intakeForm').addEventListener('submit', function(e){
   e.preventDefault();
