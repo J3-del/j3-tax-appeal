@@ -1,8 +1,10 @@
-// Countdown to the Class 1 filing deadline: March 16, 2027, 5:00 PM ET
+// Countdown to the Class 1 filing deadline: March 15, 2027, 5:00 PM ET.
+// Class 1 applications must be RECEIVED by the Tax Commission by March 15
+// (next business day when the 15th falls on a weekend). March 15, 2027 is a Monday.
 (function(){
   var el = document.getElementById('countdown');
   if(!el) return;
-  var deadline = new Date('2027-03-16T17:00:00-04:00').getTime();
+  var deadline = new Date('2027-03-15T17:00:00-04:00').getTime();
   function tick(){
     var ms = deadline - Date.now();
     if(ms <= 0){ el.textContent = 'Deadline passed'; return; }
