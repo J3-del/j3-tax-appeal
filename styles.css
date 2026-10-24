@@ -123,3 +123,9 @@ details p{padding:0 20px 18px;color:#33475c}
 @media (max-width:900px){
   .steps4{grid-template-columns:1fr}
 }
+
+/* guide additions */
+.note-box{background:var(--mist);border-left:4px solid var(--gold);padding:14px 18px;border-radius:6px;margin:14px 0}
+.guide-link{margin-top:28px;font-weight:600}
+.article-body h2{margin-top:40px}
+.article-body .fact-list{margin-bottom:8px}
