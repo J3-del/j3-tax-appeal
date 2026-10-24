@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://j3-del.github.io/j3-tax-appeal/sitemap.xml
